@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://cwa6hcn6bejd1"]
+
+[ext_resource type="AudioStream" uid="uid://k3dunkkajfu" path="res://se/bgm.mp3" id="1_mn5pt"]
+[ext_resource type="AudioStream" uid="uid://bsj3ffiy1viwn" path="res://se/boo.mp3" id="5_kw1gp"]
+[ext_resource type="AudioStream" uid="uid://6qwvso7picow" path="res://se/pinpon.mp3" id="6_42lro"]
+[ext_resource type="AudioStream" uid="uid://dowciy7nnxp3x" path="res://se/paka.mp3" id="7_akdqi"]
+[ext_resource type="AudioStream" uid="uid://bimoy7qqf0n6i" path="res://se/pyoro.mp3" id="8_g4stc"]
+[ext_resource type="AudioStream" uid="uid://bkiylvd5q6tq2" path="res://se/kiko.mp3" id="9_iwta7"]
+[ext_resource type="AudioStream" uid="uid://cwkpndtpbsqpx" path="res://se/pirorin.mp3" id="10_qxqpl"]
+
+[node name="Audio" type="Node"]
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_mn5pt")
+autoplay = true
+
+[node name="boo" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_kw1gp")
+volume_db = 8.0
+
+[node name="pinpon" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_42lro")
+volume_db = 4.0
+
+[node name="paka" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_akdqi")
+volume_db = 2.0
+
+[node name="pyoro" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_g4stc")
+
+[node name="kiko" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_iwta7")
+
+[node name="pirorin" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_qxqpl")

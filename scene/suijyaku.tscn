@@ -1,0 +1,100 @@
+[gd_scene load_steps=6 format=3 uid="uid://culvfg3n4a3xs"]
+
+[ext_resource type="Script" path="res://scripts/suijyaku.gd" id="1_8mkj4"]
+[ext_resource type="Texture2D" uid="uid://boex5s4ao68qt" path="res://Suijyaku/back.jpg" id="3_r54xy"]
+
+[sub_resource type="Animation" id="Animation_d7gsh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("front:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.25, 0.25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("front/back:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_dupp3"]
+resource_name = "flip_suijyaku"
+length = 0.4
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("front:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.205757, 0.397012),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.25, 0.25), Vector2(0.1, 0.25), Vector2(0.25, 0.25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("front/back:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.176752, 0.208477),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, -1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u00uy"]
+_data = {
+"RESET": SubResource("Animation_d7gsh"),
+"flip_suijyaku": SubResource("Animation_dupp3")
+}
+
+[node name="SuiJyaku" type="Container"]
+custom_minimum_size = Vector2(300, 300)
+offset_right = 300.0
+offset_bottom = 300.0
+script = ExtResource("1_8mkj4")
+
+[node name="front" type="Sprite2D" parent="."]
+position = Vector2(120, 120)
+scale = Vector2(0.25, 0.25)
+
+[node name="back" type="Sprite2D" parent="front"]
+texture = ExtResource("3_r54xy")
+
+[node name="Button" type="Button" parent="front/back"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -931.0
+offset_top = -999.0
+offset_right = -9.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_u00uy")
+}
+
+[connection signal="pressed" from="front/back/Button" to="." method="_on_button_pressed"]

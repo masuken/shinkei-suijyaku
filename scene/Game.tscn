@@ -1,0 +1,118 @@
+[gd_scene load_steps=14 format=3 uid="uid://cg6twr07vmlrp"]
+
+[ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_l3qur"]
+[ext_resource type="Texture2D" uid="uid://dxoqon0aorm6y" path="res://fakemon/card_01.png" id="2_s25yj"]
+[ext_resource type="Texture2D" uid="uid://dxtxtoekrtuph" path="res://fakemon/card_07.png" id="3_mnxkc"]
+[ext_resource type="Texture2D" uid="uid://dt04tp5hhqjqx" path="res://fakemon/card_03.png" id="4_di823"]
+[ext_resource type="Texture2D" uid="uid://cd8gp18nwrqcu" path="res://fakemon/card_04.png" id="5_c7dxc"]
+[ext_resource type="Texture2D" uid="uid://dojutvcjc30m3" path="res://fakemon/card_05.png" id="6_6e3d4"]
+[ext_resource type="Texture2D" uid="uid://djjct2ccaybrp" path="res://fakemon/card_06.png" id="7_evxro"]
+[ext_resource type="Texture2D" uid="uid://beoohjccumq8a" path="res://bg/bg.png" id="8_bkq1g"]
+[ext_resource type="Theme" uid="uid://by31rwnu01wrm" path="res://style/myStyle02.tres" id="9_lok1n"]
+[ext_resource type="FontFile" uid="uid://cryajh55rfttc" path="res://fonts/ヒラギノ角ゴシック W5.ttc" id="10_ap7v5"]
+[ext_resource type="PackedScene" uid="uid://kh2wholeotvo" path="res://scene/fakemon.tscn" id="12_lpdt5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lonxo"]
+
+[sub_resource type="Theme" id="Theme_6e6h5"]
+
+[node name="Game" type="Node" node_paths=PackedStringArray("cards", "shippai_num")]
+script = ExtResource("1_l3qur")
+yokai_illusts = Array[Texture2D]([ExtResource("2_s25yj"), ExtResource("3_mnxkc"), ExtResource("4_di823"), ExtResource("5_c7dxc"), ExtResource("6_6e3d4"), ExtResource("7_evxro")])
+cards = [NodePath("GridContainer/fakemon"), NodePath("GridContainer/fakemon2"), NodePath("GridContainer/fakemon3"), NodePath("GridContainer/fakemon4"), NodePath("GridContainer/fakemon5"), NodePath("GridContainer/fakemon6"), NodePath("GridContainer/fakemon7"), NodePath("GridContainer/fakemon8"), NodePath("GridContainer/fakemon9"), NodePath("GridContainer/fakemon10"), NodePath("GridContainer/fakemon11"), NodePath("GridContainer/fakemon12")]
+shippai_num = NodePath("shippai_num")
+
+[node name="BG" type="Sprite2D" parent="."]
+position = Vector2(1099, 751)
+scale = Vector2(1.19036, 1.46667)
+texture = ExtResource("8_bkq1g")
+
+[node name="reset" type="Button" parent="."]
+offset_left = 1649.0
+offset_top = 105.0
+offset_right = 2075.0
+offset_bottom = 252.0
+theme = ExtResource("9_lok1n")
+theme_override_fonts/font = ExtResource("10_ap7v5")
+theme_override_font_sizes/font_size = 90
+text = "リトライ"
+
+[node name="shuryo" type="Button" parent="."]
+offset_left = 1649.0
+offset_top = 376.0
+offset_right = 2075.0
+offset_bottom = 523.0
+theme = ExtResource("9_lok1n")
+theme_override_fonts/font = ExtResource("10_ap7v5")
+theme_override_font_sizes/font_size = 90
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lonxo")
+text = "終了する"
+
+[node name="shippai" type="Label" parent="."]
+offset_left = 1649.0
+offset_top = 1168.0
+offset_right = 1961.0
+offset_bottom = 1292.0
+theme = SubResource("Theme_6e6h5")
+theme_override_fonts/font = ExtResource("10_ap7v5")
+theme_override_font_sizes/font_size = 80
+text = "失敗数 :"
+
+[node name="shippai_num" type="Label" parent="."]
+offset_left = 1984.0
+offset_top = 1145.0
+offset_right = 2296.0
+offset_bottom = 1269.0
+theme_override_colors/font_color = Color(0.972549, 1, 0.509804, 1)
+theme_override_font_sizes/font_size = 90
+text = "0"
+
+[node name="GridContainer" type="GridContainer" parent="."]
+offset_left = 126.0
+offset_top = 104.0
+offset_right = 1380.0
+offset_bottom = 1192.0
+scale = Vector2(1.2, 1.2)
+columns = 4
+
+[node name="fakemon" parent="GridContainer" instance=ExtResource("12_lpdt5")]
+layout_mode = 2
+
+[node name="fakemon2" parent="GridContainer" instance=ExtResource("12_lpdt5")]
+layout_mode = 2
+
+[node name="fakemon3" parent="GridContainer" instance=ExtResource("12_lpdt5")]
+layout_mode = 2
+
+[node name="fakemon4" parent="GridContainer" instance=ExtResource("12_lpdt5")]
+layout_mode = 2
+
+[node name="fakemon5" parent="GridContainer" instance=ExtResource("12_lpdt5")]
+layout_mode = 2
+
+[node name="fakemon6" parent="GridContainer" instance=ExtResource("12_lpdt5")]
+layout_mode = 2
+
+[node name="fakemon7" parent="GridContainer" instance=ExtResource("12_lpdt5")]
+layout_mode = 2
+
+[node name="fakemon8" parent="GridContainer" instance=ExtResource("12_lpdt5")]
+layout_mode = 2
+
+[node name="fakemon9" parent="GridContainer" instance=ExtResource("12_lpdt5")]
+layout_mode = 2
+
+[node name="fakemon10" parent="GridContainer" instance=ExtResource("12_lpdt5")]
+layout_mode = 2
+
+[node name="fakemon11" parent="GridContainer" instance=ExtResource("12_lpdt5")]
+layout_mode = 2
+
+[node name="fakemon12" parent="GridContainer" instance=ExtResource("12_lpdt5")]
+layout_mode = 2
+
+[connection signal="focus_entered" from="reset" to="." method="_on_reset_focus_entered"]
+[connection signal="mouse_entered" from="reset" to="." method="_on_reset_mouse_entered"]
+[connection signal="pressed" from="reset" to="." method="_on_reset_pressed"]
+[connection signal="mouse_entered" from="shuryo" to="." method="_on_shuryo_mouse_entered"]
+[connection signal="pressed" from="shuryo" to="." method="_on_shuryo_pressed"]
